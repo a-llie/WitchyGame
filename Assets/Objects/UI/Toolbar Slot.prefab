@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1031569778805488982}
   - component: {fileID: 1031569778805488981}
   - component: {fileID: 8414876633523905719}
-  - component: {fileID: 8460066375137543498}
   m_Layer: 5
   m_Name: Toolbar Slot
   m_TagString: Untagged
@@ -41,7 +40,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.73740256}
   m_AnchorMax: {x: 0.13585186, y: 1}
-  m_AnchoredPosition: {x: 0.5, y: -0.3999939}
+  m_AnchoredPosition: {x: 0.5000305, y: -0.3999939}
   m_SizeDelta: {x: 0.97679996, y: 0.0909996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1031569778805488982
@@ -97,19 +96,6 @@ MonoBehaviour:
   itemIcon: {fileID: 4625631846307688671}
   quantityText: {fileID: 0}
   hightlight: {fileID: 7239450831319747525}
---- !u!114 &8460066375137543498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031569778805488987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
 --- !u!1 &2644362246496713458
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class ItemManager : MonoBehaviour
         {
             AddItem(item);
         }
+        
     }
 
     private void AddItem(Item item)
@@ -30,7 +31,8 @@ public class ItemManager : MonoBehaviour
     {
         if(nameToItemDict.ContainsKey(key))
         {
-            return nameToItemDict[key];
+            Debug.Log(nameToItemDict[key].data.itemName);
+            return nameToItemDict[key]; 
         }
         return null;
     }

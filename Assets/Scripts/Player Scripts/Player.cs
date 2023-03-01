@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
 
     public Inventory inventory;
-    public int inventorySize = 28;
+    public int inventorySize = 5;
 
     private void Awake()
     {

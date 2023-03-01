@@ -33,10 +33,9 @@ public class Slot_UI : MonoBehaviour
     {
         hightlight.SetActive(!hightlight.activeSelf);
     }
-
-    public void OnDropItemButton()
-    {
-        transform.GetChild(2).gameObject.GetComponent<DropItemButton>().CallRemove();
-    }
     
+    public void SetButtonOnClick(int index)
+    {
+        transform.GetChild(2).gameObject.GetComponent<InvRemoveButton>().SetIndex(index);
+    }
 }

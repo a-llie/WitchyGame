@@ -11,11 +11,13 @@ public class GameManager : MonoBehaviour
     public ItemData selectedCropToPlant;
     public int harvestInventory; 
     public event UnityAction onNewDay;
+    
 
     // Singleton
     public static GameManager instance;
     public ItemManager itemManager;
     public TileManager tileManager; 
+    public Inventory_UI inventoryUI;
     
 
     private void Awake ()
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         itemManager = GetComponent<ItemManager>();
         tileManager = GetComponent<TileManager>();
+        inventoryUI = GetComponent<Inventory_UI>();
     }
 
 

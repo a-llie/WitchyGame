@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Inventory_UI : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public Player player;
     public List<Slot_UI> slots = new List<Slot_UI>();
     public GameObject inventoryPanel;
@@ -53,6 +51,7 @@ public class Inventory_UI : MonoBehaviour
     public void Remove(int slotID)
     {
         Item itemToDrop = GameManager.instance.itemManager.GetItemByName(player.inventory.slots[slotID].itemName);
+        Debug.Log(itemToDrop);
         if (itemToDrop !=null)
         {
             player.DropItem(itemToDrop);
