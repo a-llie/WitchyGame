@@ -16,7 +16,6 @@ public class InventorySlots : MonoBehaviour
     private void addSlots()
     {
         Player player = GameManager.instance.inventoryUI.player;
-        //slot = GetComponent<Slot_UI>();
         for (int i = 0; i < player.inventory.slots.Count; i++)
         {
             Slot_UI newSlot = Instantiate(slot, transform);

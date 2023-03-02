@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 4625631846307688671}
-  quantityText: {fileID: 0}
+  quantityText: {fileID: 6102600825347994275}
   hightlight: {fileID: 7239450831319747525}
 --- !u!1 &2644362246496713458
 GameObject:

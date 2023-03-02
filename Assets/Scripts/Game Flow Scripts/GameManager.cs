@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public ItemManager itemManager;
     public TileManager tileManager; 
     public Inventory_UI inventoryUI;
-    
+    public Toolbar_UI toolbarUI;
 
     private void Awake ()
     {

@@ -61,11 +61,15 @@ public class Slot_UI : MonoBehaviour
     public void SetEmpty()
     {
         itemIcon.sprite = null; 
-        itemIcon.color = new Color(1,1,1,1); 
-        quantityText.text = "0";
+        itemIcon.color = new Color(1,1,1,0); 
+        quantityText.text = "";
+        //gameObject.SetActive(false);
     }
 
-
+    public bool IsEmpty()
+    {
+        return itemIcon.sprite == null;
+    }
     public void SetHighlight()
     {
         hightlight.SetActive(!hightlight.activeSelf);

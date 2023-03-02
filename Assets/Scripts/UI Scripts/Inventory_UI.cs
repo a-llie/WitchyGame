@@ -16,10 +16,12 @@ public class Inventory_UI : MonoBehaviour
 
     
 
-    private void Awake()
+    private void Start()
     {
         canvas = FindObjectOfType<Canvas>();
+        Refresh();
         inventoryPanel.SetActive(false);
+        
     }
     // Update is called once per frame
     void Update()
@@ -65,7 +67,6 @@ public class Inventory_UI : MonoBehaviour
     public void Remove(int slotID)
     {
         Item itemToDrop = GameManager.instance.itemManager.GetItemByName(player.inventory.slots[slotID].itemName);
-        Debug.Log(itemToDrop);
         if (itemToDrop !=null)
         {
             player.DropItem(itemToDrop);
@@ -90,26 +91,22 @@ public class Inventory_UI : MonoBehaviour
         dragImage.raycastTarget = false;
         dragImage.rectTransform.sizeDelta = new Vector2(50,50);
         FollowMouse(dragImage.gameObject);
-        Debug.Log("Start drag: " + dragSlot.name);
     }
 
     public void SlotDrag()
     {
         FollowMouse(dragImage.gameObject);
-        Debug.Log("Dragging: " + dragSlot.name);
     }
 
     public void SlotEndDrag()
     {
-        Debug.Log("End drag: " + dragSlot.name);
         Destroy(dragImage.gameObject);
         dragImage = null;
     }
 
     public void SlotDrop(Slot_UI slot)
     {
-        Debug.Log("Dropped " + dragSlot.name + " on " + slot.name);
-        if (dragSlot != null && slot != null && dragSlot != slot)
+        if (!dragSlot.IsEmpty() && !slot.IsEmpty() && dragSlot != slot)
         {
             Swap(dragSlot.getIndex(), slot.getIndex());
         }
@@ -121,7 +118,6 @@ public class Inventory_UI : MonoBehaviour
         {
             Vector2 position; 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out position);
-
             obj.transform.position = canvas.transform.TransformPoint(position);
         }
     }
