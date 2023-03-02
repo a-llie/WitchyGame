@@ -90,5 +90,12 @@ public class Inventory
         slots[index].RemoveItem();
     }
 
+    public void Swap(int index1, int index2)
+    {
+        Slot temp = slots[index1];
+        slots[index1] = slots[index2];
+        slots[index2] = temp;
+        
+    }
 
 }

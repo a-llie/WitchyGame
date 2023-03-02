@@ -3,12 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+
+
 public class Slot_UI : MonoBehaviour
 {
     // Start is called before the first frame update
     public Image itemIcon;
     public TextMeshProUGUI quantityText; 
     [SerializeField] private GameObject hightlight;
+    private int index; 
+    private EventTrigger trigger;
+
+    public void Start()
+    {   
+        if (gameObject.tag == "InventorySlot")
+        {
+            trigger = GetComponent<EventTrigger>();
+            EventTrigger.Entry beginDrag = new EventTrigger.Entry();
+            beginDrag.eventID = EventTriggerType.BeginDrag;
+            beginDrag.callback.AddListener((data) => { GameManager.instance.inventoryUI.SlotBeginDrag(this); });
+            trigger.triggers.Add(beginDrag);
+
+            EventTrigger.Entry drag = new EventTrigger.Entry();
+            drag.eventID = EventTriggerType.Drag;
+            drag.callback.AddListener((data) => { GameManager.instance.inventoryUI.SlotDrag(); });
+            trigger.triggers.Add(drag);
+
+            EventTrigger.Entry endDrag = new EventTrigger.Entry();
+            endDrag.eventID = EventTriggerType.EndDrag;
+            endDrag.callback.AddListener((data) => { GameManager.instance.inventoryUI.SlotEndDrag(); });
+            trigger.triggers.Add(endDrag);
+
+
+            EventTrigger.Entry drop = new EventTrigger.Entry();
+            drop.eventID = EventTriggerType.Drop;
+            drop.callback.AddListener((data) => { GameManager.instance.inventoryUI.SlotDrop(this); });
+            trigger.triggers.Add(drop);
+        }
+        
+
+
+    }
+
 
     public void SetItem(Inventory.Slot slot)
     {
@@ -37,5 +74,15 @@ public class Slot_UI : MonoBehaviour
     public void SetButtonOnClick(int index)
     {
         transform.GetChild(2).gameObject.GetComponent<InvRemoveButton>().SetIndex(index);
+    }
+
+    public void setIndex(int index)
+    {
+        this.index = index;
+    }
+
+    public int getIndex()
+    {
+        return index;
     }
 }

@@ -22,6 +22,7 @@ public class InventorySlots : MonoBehaviour
             Slot_UI newSlot = Instantiate(slot, transform);
             newSlot.SetEmpty();
             newSlot.SetButtonOnClick(i);
+            newSlot.setIndex(i);
             GameManager.instance.inventoryUI.slots.Add(newSlot);
         }
     }
