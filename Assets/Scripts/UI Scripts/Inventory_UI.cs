@@ -8,6 +8,8 @@ public class Inventory_UI : MonoBehaviour
     public Player player;
     public List<Slot_UI> slots = new List<Slot_UI>();
 
+    public GameObject toolbar;
+
     [SerializeField] private Canvas canvas;
 
     public GameObject inventoryPanel;
@@ -61,6 +63,7 @@ public class Inventory_UI : MonoBehaviour
                 }
             }
         }
+        toolbar.GetComponent<Toolbar_UI>().Refresh();
     }
 
 

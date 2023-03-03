@@ -9,12 +9,14 @@ public class Collectable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Player player = collision.GetComponent<Player>();
+        Toolbar_UI toolbar = GameManager.instance.GetComponent<Toolbar_UI>();
 
         if(player){
             Item item = GetComponent<Item>();
             if (item != null)
             {
                 player.inventory.Add(item);
+                toolbar.Refresh();
                 Destroy(this.gameObject);
             }
             

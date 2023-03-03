@@ -54,6 +54,8 @@ public class Slot_UI : MonoBehaviour
             itemIcon.sprite = slot.icon;
             itemIcon.color = new Color(1,1,1,1);
             quantityText.text = slot.count.ToString();
+            transform.GetChild(2).gameObject.SetActive(true);
+            //gameObject.SetActive(true);
         }
     }
 
@@ -63,6 +65,7 @@ public class Slot_UI : MonoBehaviour
         itemIcon.sprite = null; 
         itemIcon.color = new Color(1,1,1,0); 
         quantityText.text = "";
+        transform.GetChild(2).gameObject.SetActive(false);
         //gameObject.SetActive(false);
     }
 

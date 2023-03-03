@@ -56,6 +56,7 @@ public class Inventory
     public List<Slot> slots = new List<Slot>(); 
     public List<Slot> equipped = new List<Slot>();
 
+    //creating slots for inventory and toolbar 
     public Inventory(int numSlots)
     {
         for (int i = 0; i < numSlots; i++)
@@ -70,9 +71,12 @@ public class Inventory
         }
     }
 
+
+    //add items to array data structure 
     public void Add(Item itemToAdd)
     {
         int i = 0;
+        //add to stack if there is one
         foreach(Slot slot in slots)
         {
             if(slot.itemName == itemToAdd.data.itemName && slot.canAddItem())
@@ -87,6 +91,7 @@ public class Inventory
             i++;
         }
         i = 0; 
+        //otherwise, add to an empty available slot 
         foreach(Slot slot in slots)
         {
             if (slot.itemName == "")
@@ -103,6 +108,7 @@ public class Inventory
     }
 
 
+    //remove from inventory and toolbar if applicable 
     public void Remove(int index)
     {
         slots[index].RemoveItem();
