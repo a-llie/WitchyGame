@@ -9,7 +9,7 @@ public class Toolbar_UI : MonoBehaviour
     public Player player;
     private Slot_UI selectedSlot;
     private int numToolSlots = 8;
-    private int currSlot = 0;
+    private int activeItem = 0;
 
     private void Start()
     {
@@ -27,10 +27,11 @@ public class Toolbar_UI : MonoBehaviour
         if(toolbarSlot.Count == numToolSlots)
         {
            if (selectedSlot != null)
-               selectedSlot.SetHighlight();
+               selectedSlot.SetHighlight(false);
             selectedSlot = toolbarSlot[index];
-            selectedSlot.SetHighlight(); 
-            currSlot = index;
+            selectedSlot.SetHighlight(true); 
+            activeItem = index;
+            player.SwitchActiveItem(index);
         }
     }
 
@@ -63,8 +64,8 @@ public class Toolbar_UI : MonoBehaviour
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            if (currSlot < 7)
-                SelectSlot(++currSlot);
+            if (activeItem < 7)
+                SelectSlot(++activeItem);
             else
             {
                 SelectSlot(0);
@@ -72,8 +73,8 @@ public class Toolbar_UI : MonoBehaviour
             return true;
         }else if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            if (currSlot > 0)
-                SelectSlot(--currSlot);
+            if (activeItem > 0)
+                SelectSlot(--activeItem);
             else
             {
                 SelectSlot(7);

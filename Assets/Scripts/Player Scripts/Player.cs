@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 10f;
 
+
     private float movementX;
     private float movementY; 
     private float runX = 1; 
@@ -17,16 +18,32 @@ public class Player : MonoBehaviour
     private Vector3 direction; 
     private bool facingRight; 
 
-
     public Inventory inventory;
     public int inventorySize = 20;
     public int toolbarSize = 8;
+    public string activeItem; 
+    public Item newItem;
 
     private void Awake()
     {
         inventory = new Inventory(inventorySize);
         anim = GetComponent<Animator>();
     }
+
+
+
+    void Update()
+    {
+        //activeItem = inventory.equipped[GameManager.instance.toolbarUI.activeItem].itemName;
+        if (Input.GetKeyDown(KeyCode.Space) && activeItem != null)
+        {
+            Tool.use(activeItem);
+        }
+        HandleFacingDirection();
+        HandlePlayerAnimation();
+        HandlePlayerMovement();
+    }
+
 
 
     void HandlePlayerMovement()
@@ -84,28 +101,6 @@ public class Player : MonoBehaviour
         transform.position += direction * moveSpeed * runX * Time.deltaTime;
     }
 
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            int x = (int)transform.position.x;
-            int y = (int)transform.position.y;
-            int xOffset = facingRight? x+ 3 : x - 3;
-            int yOffset = y - 3;
-            Vector3Int position = new Vector3Int(xOffset,yOffset,0);
-            if(GameManager.instance.tileManager.isInteractable(position))
-            {
-                GameManager.instance.tileManager.SetInteracted(position);
-            }
-        }
-        HandleFacingDirection();
-        HandlePlayerAnimation();
-        HandlePlayerMovement();
-    }
-
-
-
     public void DropItem(Item item)
     {
         Vector2 spawnLocation = transform.position;
@@ -114,5 +109,31 @@ public class Player : MonoBehaviour
         droppedItem.rb.AddForce(spawnOffset * 5f, ForceMode2D.Impulse);
     }
 
+    public void Plow()
+    {
+        Debug.Log("Plow");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            int x = (int)transform.position.x;
+            int y = (int)transform.position.y;
+            int xOffset = facingRight? x+ 3 : x - 3;
+            int yOffset = y - 3;
+            Vector3Int position = new Vector3Int(xOffset,yOffset,0);
+            GameManager.instance.tileManager.TryPlowing(position);
+        }
+    }
+
+    public void Plant()
+    {
+        Debug.Log("trying to plant");
+        Item item = GameManager.instance.itemManager.GetSeedByName(activeItem);
+        Instantiate(item, transform.position, Quaternion.identity);
+    }
+
+
+    public void SwitchActiveItem(int index)
+    {
+       activeItem = inventory.equipped[index].itemName;
+    }
 
 }

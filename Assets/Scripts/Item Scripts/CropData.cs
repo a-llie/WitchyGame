@@ -6,8 +6,9 @@ using UnityEngine;
 public class CropData : ScriptableObject
 {
     public int daysToGrow;
+    public string plantName;
     public Sprite[] stageSprites;
-    public Sprite[] harvestSprite;
+    public Sprite harvestSprite;
 
 }
 

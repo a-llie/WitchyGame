@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4fe6140292002449b6d07581dff3775, type: 3}
+  m_Name: GarlicPlant
+  m_EditorClassIdentifier: 
+  daysToGrow: 0
+  stageSprites:
+  - {fileID: 197285792, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}
+  - {fileID: 438176969, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}
+  - {fileID: -1367876230, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}
+  - {fileID: -1457386703, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}
+  - {fileID: 546198151, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}
+  - {fileID: -1754655011, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}
+  harvestSprite: {fileID: -1462037698, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}

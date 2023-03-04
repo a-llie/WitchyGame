@@ -11,7 +11,7 @@ public class Slot_UI : MonoBehaviour
     // Start is called before the first frame update
     public Image itemIcon;
     public TextMeshProUGUI quantityText; 
-    [SerializeField] private GameObject hightlight;
+    [SerializeField] private GameObject highlight;
     private int index; 
     private EventTrigger trigger;
 
@@ -73,9 +73,10 @@ public class Slot_UI : MonoBehaviour
     {
         return itemIcon.sprite == null;
     }
-    public void SetHighlight()
+
+    public void SetHighlight(bool set)
     {
-        hightlight.SetActive(!hightlight.activeSelf);
+        highlight.SetActive(set);
     }
     
     public void SetButtonOnClick(int index)

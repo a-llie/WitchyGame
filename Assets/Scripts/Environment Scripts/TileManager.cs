@@ -10,6 +10,9 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Tilemap ruleTileMap;
     [SerializeField] private Tile hiddenInteractableTile;
     [SerializeField] private RuleTile interactedTile;
+    [SerializeField] public Tilemap cropMap;
+    [SerializeField] public RuleTile garlicTile;
+
 
     void Start()
     {
@@ -40,20 +43,37 @@ public class TileManager : MonoBehaviour
         TileBase tile = interactableMap.GetTile(worldPosition);
         if (tile!=null)
         {
-            Debug.Log("not null");
             if (tile.name == "Interact")
                 {return true;}  
-            else Debug.Log(tile.name);
         }
-        else Debug.Log("null");
         
         return false;
     }
 
 
-    public void SetInteracted(Vector3Int position)
+    public void TryPlowing(Vector3Int position)
+    {
+        if(isInteractable(position))
+        {
+            PlowHere(position);
+        }
+    }
+
+
+    public void PlowHere(Vector3Int position)
     {
         Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
         ruleTileMap.SetTile(worldPosition, interactedTile);
+    }
+
+    public bool isPlantable(Vector3Int position)
+    {
+        Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
+        TileBase tile = ruleTileMap.GetTile(worldPosition);
+        if (tile!=null)
+        {
+            if (tile.name == "Plowed")
+                {return true; }          }        
+        return false;
     }
 }
