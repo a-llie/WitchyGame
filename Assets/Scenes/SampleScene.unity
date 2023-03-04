@@ -284,6 +284,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 712c38b68cb2f724496b75df185fdacf, type: 3}
+--- !u!1 &432464840 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 569069679775900513, guid: 11a2717c9322f1d41a9ae27935712e81, type: 3}
+  m_PrefabInstance: {fileID: 841659446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &448741875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -858,7 +863,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5943652975380103071, guid: 11a2717c9322f1d41a9ae27935712e81, type: 3}
   m_PrefabInstance: {fileID: 841659446}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 432464840}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb7bfc94380f42f4abae3bb2e19a59b0, type: 3}
@@ -869,6 +874,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 537213345527811677, guid: 11a2717c9322f1d41a9ae27935712e81, type: 3}
   m_PrefabInstance: {fileID: 841659446}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1355140282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432464840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba44900505537604a854c72a33a08723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1372474652 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2336343109144256839, guid: 33ca9df07e73827489e1034396cb6569, type: 3}
@@ -13858,7 +13875,7 @@ PrefabInstance:
     - target: {fileID: 576817298473437593, guid: 94f0925d3929c6242a6b63550086607e, type: 3}
       propertyPath: tools.Array.data[0]
       value: 
-      objectReference: {fileID: -8302021240610658098, guid: 783417d773f8c874a9c4add80e3b7af3, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 576817298473437597, guid: 94f0925d3929c6242a6b63550086607e, type: 3}
       propertyPath: m_Name
       value: GameManager
