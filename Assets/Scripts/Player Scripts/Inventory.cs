@@ -85,6 +85,7 @@ public class Inventory
                 if (i < toolbarSize)
                 {
                     equipped[i].AddItem(itemToAdd);
+                    
                 }
                 return;
             }
@@ -96,10 +97,13 @@ public class Inventory
         {
             if (slot.itemName == "")
             {
+                slot.maxAllowed = itemToAdd.data.maxAllowed; 
                 slot.AddItem(itemToAdd);
                 if (i < toolbarSize)
                 {
                     equipped[i].AddItem(itemToAdd);
+                    if (i == GameManager.instance.player.activeItemIndex)
+                        GameManager.instance.player.SwitchActiveItem(i);
                 }
                 return;
             }

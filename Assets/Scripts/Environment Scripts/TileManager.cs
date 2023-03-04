@@ -10,8 +10,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Tilemap ruleTileMap;
     [SerializeField] private Tile hiddenInteractableTile;
     [SerializeField] private RuleTile interactedTile;
-    [SerializeField] public Tilemap cropMap;
-    [SerializeField] public RuleTile garlicTile;
+    [SerializeField] private Tilemap cropMap;
 
 
     void Start()
@@ -59,6 +58,15 @@ public class TileManager : MonoBehaviour
         }
     }
 
+
+    public void PlantHere(Vector3Int position, RuleTile tileToPlace)
+    {
+        Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
+        if(ruleTileMap.GetTile(worldPosition)!= null){
+            cropMap.SetTile(worldPosition, tileToPlace);
+            GameManager.instance.inventoryUI.Consume(GameManager.instance.player.activeItemIndex);
+        }
+    }
 
     public void PlowHere(Vector3Int position)
     {

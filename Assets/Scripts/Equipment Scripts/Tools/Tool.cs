@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Tool : MonoBehaviour
 {
-    public ToolData toolData;
     //public Equipment equipment;
     
     static Dictionary<string, System.Action> functions = new Dictionary<string, System.Action>();
@@ -12,13 +11,14 @@ public class Tool : MonoBehaviour
     void Start()
     {
         functions.Add("FarmWand", FarmWand.Use);
-        functions.Add("GarlicPlant", Plant.Use);
+        functions.Add("GarlicSeeds", Plant.Use);
         //equipment = GetComponent<Equipment>();
     }
 
 
     public static void use(string funcIndex)
     {   
+        Debug.Log("in functions script");
         if(functions.ContainsKey(funcIndex))
             functions[funcIndex]();        
     }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GarlicPlant
   m_EditorClassIdentifier: 
   daysToGrow: 0
+  plantName: GarlicPlant
   stageSprites:
   - {fileID: 197285792, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}
   - {fileID: 438176969, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}

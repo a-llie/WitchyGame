@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-    public CropData cropData;
+    public CropData asPlant;
 
     public static void Use()
     {
-        GameManager.instance.tileManager.cropMap.SetTile(new Vector3Int(0,0,0) ,GameManager.instance.tileManager.garlicTile);
+        Debug.Log("plant from static function");
+        GameManager.instance.player.Plant(); 
         
     }
 

@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 308213427}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,15 +155,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  equippedItem: b
   inventory:
     toolbarSize: 0
-    slots: []
-    equipped: []
-  inventorySize: 28
+    slots:
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      icon: {fileID: 0}
+    equipped:
+    - itemName: 
+      count: 0
+      maxAllowed: 0
+      icon: {fileID: 0}
+  inventorySize: 20
   toolbarSize: 8
-  activeItem: {fileID: 0}
-  newItem: {fileID: 0}
+  activeItem: 
+  xOffset: 2
+  activeItemIndex: 0
 --- !u!212 &8360334296540790317
 SpriteRenderer:
   m_ObjectHideFlags: 0

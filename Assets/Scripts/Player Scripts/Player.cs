@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     public int inventorySize = 20;
     public int toolbarSize = 8;
     public string activeItem; 
-    public Item newItem;
+    public int xOffset;
+    public int activeItemIndex; 
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         //activeItem = inventory.equipped[GameManager.instance.toolbarUI.activeItem].itemName;
-        if (Input.GetKeyDown(KeyCode.Space) && activeItem != null)
+        if (Input.GetKeyDown(KeyCode.Space) && activeItem != null && inventory.equipped[activeItemIndex].itemName != "")
         {
             Tool.use(activeItem);
         }
@@ -105,6 +106,8 @@ public class Player : MonoBehaviour
     {
         Vector2 spawnLocation = transform.position;
         Vector2 spawnOffset = Random.insideUnitCircle * 3.25f;
+        if (spawnOffset.y < 1) spawnOffset.y++;
+        spawnOffset.x = facingRight? Mathf.Abs(spawnOffset.x) : -Mathf.Abs(spawnOffset.x);
         Item droppedItem = Instantiate(item, spawnLocation + spawnOffset, Quaternion.identity);    
         droppedItem.rb.AddForce(spawnOffset * 5f, ForceMode2D.Impulse);
     }
@@ -114,26 +117,32 @@ public class Player : MonoBehaviour
         Debug.Log("Plow");
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            int x = (int)transform.position.x;
-            int y = (int)transform.position.y;
-            int xOffset = facingRight? x+ 3 : x - 3;
-            int yOffset = y - 3;
-            Vector3Int position = new Vector3Int(xOffset,yOffset,0);
-            GameManager.instance.tileManager.TryPlowing(position);
+            GameManager.instance.tileManager.TryPlowing(OffsetPosition());
         }
     }
 
     public void Plant()
     {
-        Debug.Log("trying to plant");
-        Item item = GameManager.instance.itemManager.GetSeedByName(activeItem);
-        Instantiate(item, transform.position, Quaternion.identity);
+        Debug.Log("planting");
+        GameManager.instance.tileManager.PlantHere(OffsetPosition(), GameManager.instance.itemManager.GetSeedByName(activeItem));
     }
 
 
     public void SwitchActiveItem(int index)
     {
        activeItem = inventory.equipped[index].itemName;
+       activeItemIndex = index; 
     }
+
+
+    public Vector3Int OffsetPosition()
+    {
+        int x = (int)transform.position.x;
+        int y = (int)transform.position.y;
+        int OffsetX = facingRight? x + xOffset   : x - xOffset;
+        int yOffset = y - 4;
+        return new Vector3Int(OffsetX,yOffset,0);
+    }
+
 
 }

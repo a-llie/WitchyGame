@@ -79,6 +79,12 @@ public class Inventory_UI : MonoBehaviour
         
     }
 
+    public void Consume(int slotID)
+    {
+        player.inventory.Remove(slotID);
+        Refresh();
+    }
+
     public void Swap(int index1, int index2)
     {
         player.inventory.Swap(index1, index2);

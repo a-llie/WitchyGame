@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7389009018950176006}
   - component: {fileID: 5638896780352017481}
   - component: {fileID: 8818663550154665080}
-  - component: {fileID: 400103304468751160}
+  - component: {fileID: 4781037464766413955}
   m_Layer: 0
   m_Name: GarlicSeeds
   m_TagString: Untagged
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336343109144256839}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5f87d4ad32720a4e84396678b26945b, type: 3}
   m_Name: 
@@ -152,8 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: bb057f3c87e5344458ff875da5eee6a8, type: 2}
+  asPlant: {fileID: 11400000, guid: 31aed5cbefa24c74a9876e9cee100e99, type: 2}
   rb: {fileID: 0}
---- !u!114 &400103304468751160
+--- !u!114 &4781037464766413955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,4 +166,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6294af7769a66e44ca1b8854e438cc1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropData: {fileID: 0}
+  asPlant: {fileID: 8818663550154665080, guid: 9551626864643e243bb5487e9f1f43c5, type: 3}

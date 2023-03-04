@@ -7,11 +7,9 @@ public class ItemManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public Item[] items;
-    public Tool[] tools;
     public Item [] seeds;
     private Dictionary<string, Item> nameToItemDict = new Dictionary<string, Item>();
-    private Dictionary<string, Tool> nameToToolDict = new Dictionary<string, Tool>();
-    private Dictionary<string, Item> nameToPlantDict = new Dictionary<string,Item>(); 
+    private Dictionary<string, RuleTile> nameToPlantDict = new Dictionary<string,RuleTile>(); 
 
     private void Awake()
     {
@@ -19,17 +17,10 @@ public class ItemManager : MonoBehaviour
         {
             AddItem(item);
         }
-        foreach(Tool tool in tools)
-        {
-            AddTool(tool);
-        }
         foreach(Item item in seeds)
         {
             AddSeed(item);
         }
-        Debug.Log(nameToPlantDict["GarlicPlant"].data.itemName);
-        Item garlicPlant = nameToPlantDict["GarlicPlant"];
-        Instantiate(garlicPlant, new Vector2(0,0), Quaternion.identity);
     }
 
     private void AddItem(Item item)
@@ -50,38 +41,22 @@ public class ItemManager : MonoBehaviour
     }
 
 
-    private void AddTool(Tool tool)
-    {
-        if(!nameToToolDict.ContainsKey(tool.toolData.toolName))
-        {
-            nameToToolDict.Add(tool.toolData.toolName, tool);
-        }
-    }
-
-    public Tool GetToolByName(string key)
-    {
-        if(nameToToolDict.ContainsKey(key))
-        {
-            return nameToToolDict[key]; 
-        }
-        return null;
-    }
-
     private void AddSeed(Item seed)
     {
         if(!nameToPlantDict.ContainsKey(seed.data.itemName))
         {
-            nameToPlantDict.Add(seed.data.itemName, seed);
+            nameToPlantDict.Add(seed.data.itemName, seed.asPlant);
         }
     }
 
 
-    public Item GetSeedByName(string key)
+    public RuleTile GetSeedByName(string key)
     {
         if(nameToPlantDict.ContainsKey(key))
         {
             return nameToPlantDict[key]; 
         }
+        Debug.Log("no key w/ that name");
         return null;
     }
 }

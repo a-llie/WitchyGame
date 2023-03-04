@@ -16,8 +16,9 @@ public class Collectable : MonoBehaviour
 
     public void Start()
     {
-        isCollectable = true;
+        isCollectable = true; 
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

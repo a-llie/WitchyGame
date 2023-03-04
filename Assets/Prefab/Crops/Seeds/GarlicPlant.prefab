@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: -7389009018950176006}
   - component: {fileID: 5638896780352017481}
   - component: {fileID: 8818663550154665080}
-  - component: {fileID: -4106311185685027939}
+  - component: {fileID: 400103304468751160}
   m_Layer: 0
-  m_Name: FarmWand
+  m_Name: GarlicPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 6df917e3fd0a15f49bf3c86cff10b65f, type: 3}
+  m_Sprite: {fileID: 197285792, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336343109144256839}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5f87d4ad32720a4e84396678b26945b, type: 3}
   m_Name: 
@@ -151,10 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6dbbdd6546eac4a8aaba89ad8c248e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 548b6384f59a6ab45ab566618dd417a9, type: 2}
-  asPlant: {fileID: 0}
+  data: {fileID: 11400000, guid: 3a841cae05ac7244ca0635ca37375dfc, type: 2}
+  asPlant: {fileID: 11400000, guid: 31aed5cbefa24c74a9876e9cee100e99, type: 2}
   rb: {fileID: 0}
---- !u!114 &-4106311185685027939
+--- !u!114 &400103304468751160
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,6 +163,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2336343109144256839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba44900505537604a854c72a33a08723, type: 3}
+  m_Script: {fileID: 11500000, guid: 6294af7769a66e44ca1b8854e438cc1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  asPlant: {fileID: 0}
