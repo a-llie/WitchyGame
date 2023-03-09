@@ -26,13 +26,17 @@ public class Collectable : MonoBehaviour
         Toolbar_UI toolbar = GameManager.instance.GetComponent<Toolbar_UI>();
 
         if(player && isCollectable){
-            Item item = GetComponent<Item>();
-            if (item != null)
+            if (player.canCollectItems)
             {
-                player.inventory.Add(item);
-                toolbar.Refresh();
-                Destroy(this.gameObject);
+                Item item = GetComponent<Item>();
+                if (item != null)
+                {
+                    player.inventory.Add(item);
+                    toolbar.Refresh();
+                    Destroy(this.gameObject);
+                }
             }
+            
             
         }
     }

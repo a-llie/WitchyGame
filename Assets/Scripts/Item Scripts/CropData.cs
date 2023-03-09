@@ -7,6 +7,7 @@ public class CropData : ScriptableObject
 {
     public int daysToGrow;
     public string plantName;
+    public Sprite grownVersion;
     public Sprite[] stageSprites;
     public Sprite harvestSprite;
 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -7389009018950176006}
   - component: {fileID: 5638896780352017481}
   - component: {fileID: 8818663550154665080}
+  - component: {fileID: 7725941798294516196}
   m_Layer: 0
   m_Name: FarmWand
   m_TagString: Untagged
@@ -153,3 +154,15 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 548b6384f59a6ab45ab566618dd417a9, type: 2}
   asPlant: {fileID: 0}
   rb: {fileID: 0}
+--- !u!114 &7725941798294516196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336343109144256839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8464f6189b42626459c86a9c86aac9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

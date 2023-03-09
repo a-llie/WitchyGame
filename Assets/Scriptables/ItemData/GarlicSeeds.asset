@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: GarlicSeeds
   m_EditorClassIdentifier: 
   itemName: GarlicSeeds
-  icon: {fileID: 197285792, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}
+  equipmentName: Seeds
+  icon: {fileID: 2059202153, guid: 698ec2a6324f0894291626e401f0dfc6, type: 3}
   maxAllowed: 50

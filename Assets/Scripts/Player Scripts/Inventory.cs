@@ -11,6 +11,7 @@ public class Inventory
     public class Slot
     {
         public string itemName; 
+        public string equipmentName; 
         public int count; 
         public int maxAllowed; 
         public Sprite icon; 
@@ -19,6 +20,7 @@ public class Inventory
         public Slot()
         {
             itemName = ""; 
+            equipmentName = "";
             count = 0;
             maxAllowed = 99; 
         }
@@ -35,6 +37,7 @@ public class Inventory
         public void AddItem(Item item)
         {
             this.itemName = item.data.itemName; 
+            this.equipmentName = item.data.equipmentName; 
             this.icon = item.data.icon;
             count++; 
         }
@@ -48,6 +51,7 @@ public class Inventory
                 {
                     icon = null;
                     itemName = "";
+                    equipmentName = "";
                 }
             }
         }
@@ -73,7 +77,7 @@ public class Inventory
 
 
     //add items to array data structure 
-    public void Add(Item itemToAdd)
+    public bool Add(Item itemToAdd)
     {
         int i = 0;
         //add to stack if there is one
@@ -84,10 +88,9 @@ public class Inventory
                 slot.AddItem(itemToAdd); 
                 if (i < toolbarSize)
                 {
-                    equipped[i].AddItem(itemToAdd);
-                    
+                    equipped[i].AddItem(itemToAdd);         
                 }
-                return;
+                return true;
             }
             i++;
         }
@@ -105,10 +108,12 @@ public class Inventory
                     if (i == GameManager.instance.player.activeItemIndex)
                         GameManager.instance.player.SwitchActiveItem(i);
                 }
-                return;
+                return true;
             }
             i++;
         }
+
+        return false;
     }
 
 
@@ -135,6 +140,8 @@ public class Inventory
         {
             equipped[index2] = slots[index2];
         }
+
+        GameManager.instance.player.SwitchActiveItem(GameManager.instance.player.activeItemIndex);
         
     }
 

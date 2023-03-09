@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 576817298473437598}
   - component: {fileID: 576817298473437593}
   - component: {fileID: 576817298473437592}
-  - component: {fileID: 2402786148271361875}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,13 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4568555a91cff9428f18e1458b32ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curDay: 0
-  money: 0
-  cropInventory: 0
-  selectedCropToPlant: {fileID: 0}
-  harvestInventory: 0
   itemManager: {fileID: 0}
   tileManager: {fileID: 0}
+  inventoryUI: {fileID: 0}
+  toolbarUI: {fileID: 0}
+  player: {fileID: 0}
+  itemManString: ItemManager
 --- !u!114 &576817298473437593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,8 +64,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01dea5a9bd27464bb7ee8dc1b49f5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectableItems:
-  - {fileID: 6319140483698421968, guid: 33ca9df07e73827489e1034396cb6569, type: 3}
+  items: []
+  seeds: []
+  tools: []
 --- !u!50 &576817298473437592
 Rigidbody2D:
   serializedVersion: 4
@@ -89,17 +88,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2402786148271361875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576817298473437597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5c1c14a2d999324c995ba18528a936f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactableMap: {fileID: 0}
-  hiddenInteractableTile: {fileID: 0}

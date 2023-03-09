@@ -24,11 +24,15 @@ public class Player : MonoBehaviour
     public string activeItem; 
     public int xOffset;
     public int activeItemIndex; 
+    public bool canCollectItems = true;
 
+
+    public Equipment currentTool;
     private void Awake()
     {
         inventory = new Inventory(inventorySize);
         anim = GetComponent<Animator>();
+        //currentTool = GameManager.instance.itemManager.tools[0];
     }
 
 
@@ -36,10 +40,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         //activeItem = inventory.equipped[GameManager.instance.toolbarUI.activeItem].itemName;
-        if (Input.GetKeyDown(KeyCode.Space) && activeItem != null && inventory.equipped[activeItemIndex].itemName != "")
-        {
-            Tool.use(activeItem);
-        }
+        HandleInteract();
+        HandleToolUse(); 
         HandleFacingDirection();
         HandlePlayerAnimation();
         HandlePlayerMovement();
@@ -96,6 +98,25 @@ public class Player : MonoBehaviour
         }
     }
 
+    void HandleToolUse()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)  && activeItem != null && inventory.equipped[activeItemIndex].equipmentName != "")
+        {
+            currentTool.Use();
+            //Tool.use(activeItem);
+        }
+    }
+
+
+    void HandleInteract()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            GameManager.instance.tileManager.Interact(OffsetPosition());
+            //Tool.use(activeItem);
+        }
+    }
+
 
     void FixedUpdate()
     {
@@ -104,17 +125,25 @@ public class Player : MonoBehaviour
 
     public void DropItem(Item item)
     {
+        canCollectItems = false;
         Vector2 spawnLocation = transform.position;
         Vector2 spawnOffset = Random.insideUnitCircle * 3.25f;
         if (spawnOffset.y < 1) spawnOffset.y++;
         spawnOffset.x = facingRight? Mathf.Abs(spawnOffset.x) : -Mathf.Abs(spawnOffset.x);
         Item droppedItem = Instantiate(item, spawnLocation + spawnOffset, Quaternion.identity);    
         droppedItem.rb.AddForce(spawnOffset * 5f, ForceMode2D.Impulse);
+        StartCoroutine(wait());
+        
     }
 
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(0.1f);
+        canCollectItems = true;
+    }
     public void Plow()
     {
-        Debug.Log("Plow");
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameManager.instance.tileManager.TryPlowing(OffsetPosition());
@@ -123,15 +152,19 @@ public class Player : MonoBehaviour
 
     public void Plant()
     {
-        Debug.Log("planting");
         GameManager.instance.tileManager.PlantHere(OffsetPosition(), GameManager.instance.itemManager.GetSeedByName(activeItem));
     }
 
+    public void Harvest()
+    {
+
+    }
 
     public void SwitchActiveItem(int index)
     {
        activeItem = inventory.equipped[index].itemName;
        activeItemIndex = index; 
+       currentTool = GameManager.instance.itemManager.GetToolByName(inventory.equipped[index].equipmentName);
     }
 
 

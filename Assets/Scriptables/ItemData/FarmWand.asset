@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: FarmWand
   m_EditorClassIdentifier: 
   itemName: FarmWand
+  equipmentName: FarmWand
   icon: {fileID: 21300000, guid: 6df917e3fd0a15f49bf3c86cff10b65f, type: 3}
   maxAllowed: 1

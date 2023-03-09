@@ -9,7 +9,7 @@ public class Item : MonoBehaviour
 {
     // Start is called before the first frame update
     public ItemData data;
-    public RuleTile asPlant;
+    public RuleTile plantVersion;
 
     [HideInInspector] public Rigidbody2D rb;
 

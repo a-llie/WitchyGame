@@ -49,7 +49,6 @@ public class TileManager : MonoBehaviour
         return false;
     }
 
-
     public void TryPlowing(Vector3Int position)
     {
         if(isInteractable(position))
@@ -57,12 +56,11 @@ public class TileManager : MonoBehaviour
             PlowHere(position);
         }
     }
-
-
+    
     public void PlantHere(Vector3Int position, RuleTile tileToPlace)
     {
         Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
-        if(ruleTileMap.GetTile(worldPosition)!= null){
+        if(isPlantable(position)){
             cropMap.SetTile(worldPosition, tileToPlace);
             GameManager.instance.inventoryUI.Consume(GameManager.instance.player.activeItemIndex);
         }
@@ -83,5 +81,35 @@ public class TileManager : MonoBehaviour
             if (tile.name == "Plowed")
                 {return true; }          }        
         return false;
+    }
+
+    public bool CanInteract(Vector3Int position)
+    {
+        Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
+        TileBase tile = cropMap.GetTile(worldPosition);
+        if (tile!=null)
+        {
+            return true; 
+        }        
+        return false;
+    }
+
+    public void Interact(Vector3Int position)
+    {
+        Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
+        if(CanInteract(position))
+        {
+            
+            Item harvest = cropMap.GetInstantiatedObject(worldPosition).GetComponent<Plant>().grownVersion;
+            if (cropMap.GetInstantiatedObject(worldPosition).GetComponent<Plant>().isHarvestable){
+                if (GameManager.instance.player.inventory.Add(harvest))
+                {
+                    Destroy(cropMap.GetInstantiatedObject(worldPosition)); 
+                    GameManager.instance.toolbarUI.Refresh();
+                }
+            }
+            
+             
+        }
     }
 }

@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: -7389009018950176006}
   - component: {fileID: 5638896780352017481}
   - component: {fileID: 8818663550154665080}
+  - component: {fileID: 400103304468751160}
   m_Layer: 0
-  m_Name: GarlicSeeds
+  m_Name: GarlicPlant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2336343109144256839}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 2059202153, guid: 698ec2a6324f0894291626e401f0dfc6, type: 3}
+  m_Sprite: {fileID: 197285792, guid: 5f444d14bdd11d445ad578ce4a256bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.26, y: 1.83}
+  m_Size: {x: 7, y: 7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -95,7 +96,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336343109144256839}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5f87d4ad32720a4e84396678b26945b, type: 3}
   m_Name: 
@@ -150,6 +151,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6dbbdd6546eac4a8aaba89ad8c248e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: bb057f3c87e5344458ff875da5eee6a8, type: 2}
-  plantVersion: {fileID: 11400000, guid: 31aed5cbefa24c74a9876e9cee100e99, type: 2}
+  data: {fileID: 11400000, guid: 3a841cae05ac7244ca0635ca37375dfc, type: 2}
+  plantVersion: {fileID: 0}
   rb: {fileID: 0}
+--- !u!114 &400103304468751160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336343109144256839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6294af7769a66e44ca1b8854e438cc1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asPlant: {fileID: 11400000, guid: 6184eda8ed9b2bc49a334bf2e94451aa, type: 2}
+  plantIcon: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+  currentSprite: 0
+  isHarvestable: 0
+  grownVersion: {fileID: 8818663550154665080, guid: 33ca9df07e73827489e1034396cb6569, type: 3}

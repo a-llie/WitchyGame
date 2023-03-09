@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FarmWand :  MonoBehaviour
+public class FarmWand :  Equipment
 {
-    public static void Use()
+    public string equipmentName = "FarmWand";
+    public override void Use()
     {
-        Debug.Log("in farm wand script");
         GameManager.instance.player.Plow();
     }
 }

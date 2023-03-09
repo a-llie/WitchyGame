@@ -8,8 +8,11 @@ public class ItemManager : MonoBehaviour
     // Start is called before the first frame update
     public Item[] items;
     public Item [] seeds;
+    public Equipment[] tools;
     private Dictionary<string, Item> nameToItemDict = new Dictionary<string, Item>();
     private Dictionary<string, RuleTile> nameToPlantDict = new Dictionary<string,RuleTile>(); 
+    private Dictionary<string, Equipment> nameToToolDict = new Dictionary<string, Equipment>(); 
+
 
     private void Awake()
     {
@@ -20,6 +23,11 @@ public class ItemManager : MonoBehaviour
         foreach(Item item in seeds)
         {
             AddSeed(item);
+            Debug.Log(item.data.itemName, nameToPlantDict[item.data.itemName]);
+        }
+        foreach(Equipment equip in tools)
+        {
+            AddTool(equip);
         }
     }
 
@@ -41,11 +49,30 @@ public class ItemManager : MonoBehaviour
     }
 
 
+    private void AddTool(Equipment item)
+    {
+        if(!nameToToolDict.ContainsKey(item.name))
+        {
+            Debug.Log("adding " + item.name);
+            nameToToolDict.Add(item.name, item);
+        }
+    }
+
+
+    public Equipment GetToolByName(string key)
+    {
+        if(nameToToolDict.ContainsKey(key))
+        {
+            return nameToToolDict[key]; 
+        }
+        return null;
+    }
+
     private void AddSeed(Item seed)
     {
         if(!nameToPlantDict.ContainsKey(seed.data.itemName))
         {
-            nameToPlantDict.Add(seed.data.itemName, seed.asPlant);
+            nameToPlantDict.Add(seed.data.itemName, seed.plantVersion);
         }
     }
 
@@ -56,7 +83,6 @@ public class ItemManager : MonoBehaviour
         {
             return nameToPlantDict[key]; 
         }
-        Debug.Log("no key w/ that name");
         return null;
     }
 }

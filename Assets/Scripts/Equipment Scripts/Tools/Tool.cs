@@ -10,21 +10,21 @@ public class Tool : MonoBehaviour
 
     void Start()
     {
-        functions.Add("FarmWand", FarmWand.Use);
-        functions.Add("Seeds", Plant.Use);
+   //     functions.Add("FarmWand", FarmWand.Use);
+     //   functions.Add("Seeds", Plant.Use);
         //equipment = GetComponent<Equipment>();
     }
 
 
     public static void use(string funcIndex)
     {   
-        Debug.Log("in functions script");
+       /* Debug.Log("in functions script");
         if (funcIndex.Contains("Seeds")){
             funcIndex = "Seeds";
         }
         if(functions.ContainsKey(funcIndex))
             functions[funcIndex]();        
+    }*/
     }
-
 
 }
