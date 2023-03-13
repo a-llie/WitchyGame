@@ -38,7 +38,7 @@ public class TileManager : MonoBehaviour
 
     public bool isInteractable(Vector3Int position)
     {
-        Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
+        Vector3Int worldPosition = divideByThree(position);
         TileBase tile = interactableMap.GetTile(worldPosition);
         if (tile!=null)
         {
@@ -59,8 +59,8 @@ public class TileManager : MonoBehaviour
     
     public void PlantHere(Vector3Int position, RuleTile tileToPlace)
     {
-        Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
-        if(isPlantable(position)){
+        Vector3Int worldPosition = divideByThree(position);
+        if(isPlantable(worldPosition) && isEmpty(worldPosition)){
             cropMap.SetTile(worldPosition, tileToPlace);
             GameManager.instance.inventoryUI.Consume(GameManager.instance.player.activeItemIndex);
         }
@@ -68,14 +68,13 @@ public class TileManager : MonoBehaviour
 
     public void PlowHere(Vector3Int position)
     {
-        Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
+        Vector3Int worldPosition = divideByThree(position);
         ruleTileMap.SetTile(worldPosition, interactedTile);
     }
 
     public bool isPlantable(Vector3Int position)
     {
-        Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
-        TileBase tile = ruleTileMap.GetTile(worldPosition);
+        TileBase tile = ruleTileMap.GetTile(position);
         if (tile!=null)
         {
             if (tile.name == "Plowed")
@@ -85,9 +84,18 @@ public class TileManager : MonoBehaviour
 
     public bool CanInteract(Vector3Int position)
     {
-        Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
-        TileBase tile = cropMap.GetTile(worldPosition);
+        TileBase tile = cropMap.GetTile(position);
         if (tile!=null)
+        {
+            return true; 
+        }        
+        return false;
+    }
+
+    public bool isEmpty(Vector3Int position)
+    {
+        TileBase tile = cropMap.GetTile(position);
+        if (tile==null)
         {
             return true; 
         }        
@@ -96,20 +104,22 @@ public class TileManager : MonoBehaviour
 
     public void Interact(Vector3Int position)
     {
-        Vector3Int worldPosition = new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
-        if(CanInteract(position))
+        Vector3Int worldPosition = divideByThree(position);
+        if(CanInteract(worldPosition))
         {
-            
-            Item harvest = cropMap.GetInstantiatedObject(worldPosition).GetComponent<Plant>().grownVersion;
-            if (cropMap.GetInstantiatedObject(worldPosition).GetComponent<Plant>().isHarvestable){
-                if (GameManager.instance.player.inventory.Add(harvest))
-                {
-                    Destroy(cropMap.GetInstantiatedObject(worldPosition)); 
-                    GameManager.instance.toolbarUI.Refresh();
-                }
-            }
-            
-             
+            Plant plant =  cropMap.GetInstantiatedObject(worldPosition).GetComponent<Plant>();
+            plant.Interact(worldPosition);
         }
     }
+
+    public void DestroyTile(Vector3Int position)
+    {
+        cropMap.SetTile(position, null);
+    }
+
+    public Vector3Int divideByThree(Vector3Int position)
+    {
+        return new Vector3Int((int)((position.x))/3, (int)((position.y))/3,0);
+    }
+
 }

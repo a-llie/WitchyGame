@@ -19,6 +19,18 @@ public class Plant : Equipment
         
     }
 
+    public void Interact(Vector3Int worldPosition)
+    {
+        if (isHarvestable)
+        {
+            if (GameManager.instance.player.inventory.Add(grownVersion))
+                {
+                    Destroy(this); 
+                    GameManager.instance.tileManager.DestroyTile(worldPosition);
+                    GameManager.instance.toolbarUI.Refresh();
+                }
+        }
+    }
 
     void Start(){
         isHarvestable = false;

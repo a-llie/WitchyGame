@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4fe6140292002449b6d07581dff3775, type: 3}
+  m_Name: CandyCornPlant
+  m_EditorClassIdentifier: 
+  daysToGrow: 7
+  plantName: CandyCornPlant
+  grownVersion: {fileID: 21300000, guid: 418e57f5f7342d940b28725ba4975649, type: 3}
+  stageSprites:
+  - {fileID: 1660304354, guid: fed91abd3c61d2844a7d0344218c036a, type: 3}
+  - {fileID: 1102226026, guid: fed91abd3c61d2844a7d0344218c036a, type: 3}
+  - {fileID: 1012249317, guid: fed91abd3c61d2844a7d0344218c036a, type: 3}
+  - {fileID: 968515050, guid: fed91abd3c61d2844a7d0344218c036a, type: 3}
+  - {fileID: 814895499, guid: fed91abd3c61d2844a7d0344218c036a, type: 3}
+  - {fileID: 236699190, guid: fed91abd3c61d2844a7d0344218c036a, type: 3}
+  harvestSprite: {fileID: -1527271481, guid: fed91abd3c61d2844a7d0344218c036a, type: 3}
